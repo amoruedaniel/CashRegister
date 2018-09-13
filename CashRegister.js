@@ -5,10 +5,21 @@ function checkCashRegister(price, cash, cid) {
         registerInsufficient: 'INSUFICIENT_FUNDS'
     }
     
-    var change;
+    let cashRegister = {status: '', change: cid};
+    let changeDue = cash - price;
+    
+    const cashAddition = (a , b) => a + b[1];
+    let cashInDrawer = cid.reduce(cashAddition, 0).toFixed(2);
+    
+    console.log(cashInDrawer);
+
+    if (changeDue > cashInDrawer){
+        cashRegister.status = REGISTER_STATUS.registerInsufficient;
+        cashRegister.change = [];
+    }
 
     // Here is your change, ma'am.
-    return change;
+    return cashRegister;
   }
   
   // Example cash-in-drawer array:
