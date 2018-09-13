@@ -54,9 +54,11 @@ function checkCashRegister(price, cash, cid) {
                 changeArray.push([currencyName, currencyToReturn * currencyValue]);
             }
             
+            //This block detects if no more change is due and returns the array
+            //The else if is needed to detect if change was unable to be given
             if (changeDue == 0.00){
                 return changeArray;
-            }else if (i === 0){
+            }else if (i === 0){ 
                 cashRegister.status = REGISTER_STATUS.registerInsufficient;
                 return [];
             }else{
@@ -65,8 +67,4 @@ function checkCashRegister(price, cash, cid) {
         }
     }
     return cashRegister;
-  }
-  
-
-  
-  checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+}
