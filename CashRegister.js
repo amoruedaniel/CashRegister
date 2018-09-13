@@ -7,7 +7,7 @@ function checkCashRegister(price, cash, cid) {
     
     let cashRegister = {status: '', change: cid};
     let changeDue = parseFloat(cash - price).toFixed(2);
-    
+
     const cashAddition = (a , b) => a + b[1];
     let cashInDrawer = cid.reduce(cashAddition, 0).toFixed(2);
 
@@ -20,21 +20,19 @@ function checkCashRegister(price, cash, cid) {
     }else {
         cashRegister.status = REGISTER_STATUS.registerOpen;
         cashRegister.change = calculateCustomerChange(changeDue, cid);
-
-
     }
 
     function calculateCustomerChange(changeDue, currencyInDrawer){
         const changeArray = [];
         const currencyDictionary = {
-            "PENNY"         :  0.01,
-            "NICKEL"        :  0.05,
-            "DIME"          :  0.10,
-            "QUARTER"       :  0.25,
-            "ONE"           :  1.00,
-            "FIVE"          :  5.00,
-            "TEN"           : 10.00,
-            "TWENTY"        : 20.00,
+            "PENNY"         :   0.01,
+            "NICKEL"        :   0.05,
+            "DIME"          :   0.10,
+            "QUARTER"       :   0.25,
+            "ONE"           :   1.00,
+            "FIVE"          :   5.00,
+            "TEN"           :  10.00,
+            "TWENTY"        :  20.00,
             "ONE HUNDRED"   : 100.00
         };
 
@@ -66,10 +64,6 @@ function checkCashRegister(price, cash, cid) {
             }
         }
     }
-
-
-
-    console.log(cashRegister);
     return cashRegister;
   }
   
